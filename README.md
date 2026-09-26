@@ -2,6 +2,7 @@
 Una calculadora que responde una pregunta simple: ¿cuánto vale realmente una hora de tu trabajo?
 🔗 tu-sueldo-real.netlify.app
 ---
+![Tu sueldo real](01.png)
 Por qué existe
 En marzo de 2026 se publicó en el DOF la reforma constitucional que reduce la jornada laboral en México, y el 1 de mayo el decreto que la aterriza en la Ley Federal del Trabajo: la jornada baja dos horas por año hasta llegar a 40 horas semanales en 2030.
 Toda la conversación se fue a cuántas horas se trabajan. A mí me interesó otra pregunta: cuánto vale cada una.
