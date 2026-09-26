@@ -1,0 +1,5 @@
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;font-family:var(--font-sans);color:var(--text-primary);background:var(--surface-page);-webkit-font-smoothing:antialiased}
+a{color:var(--ink-900);text-decoration:underline;text-underline-offset:2px}
+a:hover{color:var(--sage-700)}
+.tsr-num{font-variant-numeric:tabular-nums;letter-spacing:var(--ls-tight)}
