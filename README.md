@@ -1,75 +1,73 @@
-# Tu-sueldo-real
-Una calculadora que responde una pregunta simple: ¿cuánto vale realmente una hora de tu trabajo?
-🔗 tu-sueldo-real.netlify.app
----
-![Tu sueldo real](01.png)
-Por qué existe
-En marzo de 2026 se publicó en el DOF la reforma constitucional que reduce la jornada laboral en México, y el 1 de mayo el decreto que la aterriza en la Ley Federal del Trabajo: la jornada baja dos horas por año hasta llegar a 40 horas semanales en 2030.
-Toda la conversación se fue a cuántas horas se trabajan. A mí me interesó otra pregunta: cuánto vale cada una.
-Casi nadie conoce su sueldo por hora real. Dividimos el sueldo entre las horas del contrato y ahí queda. Pero el trabajo cobra más que eso: horas extra que no se pagan, tiempo de traslado, y dinero que solo se gasta por ir a trabajar.
-Esta calculadora pone esos tres factores en la cuenta.
-Para qué sirve
-No es un diagnóstico ni nada por el estilo. Es una herramienta que te lleva a tomar consciencia de lo que realmente ganamos:
-Comparar dos ofertas de trabajo que se ven distintas en papel
-Ponerle número a una negociación de sueldo o de días en casa
-Decidir si conviene un empleo con dos horas de traslado
-Cómo funciona
-Entradas
-Sueldo neto mensual · días trabajados por semana · horas contratadas · horas extra no pagadas · minutos de traslado al día · gasto diario en transporte · gasto diario en comida · otros gastos mensuales por trabajar.
-Cinco campos vienen pre-llenados con los valores más comunes.
-Cálculo
-```
-Constante: 4.333 semanas por mes (52 ÷ 12)
+# Tu sueldo real
 
-Hp = horas contratadas × 4.333
-Hx = horas extra × 4.333
-Ht = (minutos de traslado ÷ 60) × días presenciales × 4.333
-G  = (transporte + comida) × días presenciales × 4.333 + otros gastos
+**¿Cuánto vale realmente tu hora de trabajo?**
 
-Hora nominal           = sueldo ÷ Hp
-Hora real sin traslado = (sueldo − G) ÷ (Hp + Hx)
-Hora real con traslado = (sueldo − G) ÷ (Hp + Hx + Ht)
+[Probar la calculadora](https://tu-sueldo-real.netlify.app/) · Proyecto de Andrea Galicia
+
+![Vista de la calculadora Tu sueldo real](01.png)
+
+## Por qué hice este proyecto
+
+Cuando pensamos en nuestro sueldo por hora, solemos dividir el sueldo mensual entre las horas del contrato. Esa cuenta deja fuera tiempo y dinero que también dedicamos al trabajo: horas extra no pagadas, traslados y gastos necesarios para ir a trabajar.
+
+Creé esta calculadora para hacer visibles esos costos y ayudar a comparar ofertas de empleo, pensar en un aumento o valorar un esquema de trabajo desde casa. La reducción gradual de la jornada laboral en México me llevó a plantear otra pregunta: además de cuántas horas trabajamos, ¿cuánto nos queda realmente por cada una?
+
+## Qué puedes calcular
+
+La página pide tu sueldo neto mensual, días y horas de trabajo, horas extra no pagadas, tiempo de traslado y gastos relacionados con trabajar. Muestra:
+
+- El sueldo por hora según las horas contratadas.
+- Lo que queda por hora al descontar gastos y sumar las horas extra no pagadas.
+- Lo que queda por hora si también se cuenta el tiempo de traslado.
+- Tres escenarios independientes: menos tiempo de traslado, hasta dos días de trabajo desde casa y un aumento salarial del 10 %.
+
+Si los gastos por trabajar igualan o superan el sueldo, la página muestra el saldo o déficit mensual y compara los escenarios según cuánto mejoran ese saldo. Un cambio de horario, por sí solo, no reduce los gastos capturados por día.
+
+## Cómo se hace la cuenta
+
+La calculadora usa **4.333 semanas por mes**. Si `S` es el sueldo neto mensual, `D` los días presenciales por semana, `Hc` las horas contratadas por semana, `He` las horas extra no pagadas por semana, `T` los minutos de traslado al día, `Gt` y `Gc` los gastos diarios de transporte y comida, y `Go` otros gastos mensuales:
+
+```text
+Horas contratadas al mes = Hc × 4.333
+Horas extra al mes = He × 4.333
+Horas de traslado al mes = (T ÷ 60) × D × 4.333
+Gastos mensuales por trabajar = (Gt + Gc) × D × 4.333 + Go
+
+Sueldo por hora contratada = S ÷ horas contratadas al mes
+Hora real sin traslado = (S − gastos mensuales) ÷ (horas contratadas al mes + horas extra al mes)
+Hora real con traslado = (S − gastos mensuales) ÷ (horas contratadas al mes + horas extra al mes + horas de traslado al mes)
 ```
-Se muestran las dos horas reales, con y sin traslado. Legalmente el traslado no es jornada; en la práctica, si no tuvieras ese trabajo no harías ese trayecto. En vez de imponer una interpretación, la calculadora enseña las dos y deja que cada quien decida cuál le sirve.
-Escenarios
-Recalcula la hora real cambiando una sola cosa a la vez: media hora menos de traslado, dos días de home office, o un aumento del 10%. Después señala cuál sube más la hora real.
-El resultado suele sorprender: para quien tiene traslado y gastos diarios, dos días de home office valen más que un aumento del 10%.
-Modo déficit
-Cuando los gastos por trabajar igualan o superan el sueldo, la hora real se vuelve negativa y la lógica se invierte: dividir un saldo negativo entre menos horas hace que ahorrar tiempo parezca empeorar el resultado.
-En ese caso la calculadora deja de comparar por hora y cambia de métrica: muestra el déficit mensual y ordena las opciones por cuánto mejoran el saldo. Cambiar de métrica cuando la primera deja de tener sentido resulta más útil que apagar la sección.
-Fuentes
-DOF, 1 de mayo de 2026 — Decreto que reforma, adiciona y deroga diversas disposiciones de la Ley Federal del Trabajo en materia de reducción de la jornada laboral. Ver decreto
-DOF, 3 de marzo de 2026 — Reforma constitucional al artículo 123, fracciones IV y XI.
-Los topes de jornada, los límites de horas extra y las reglas de pago salen del texto del decreto, verificado directamente. Ninguna cifra legal viene de notas de prensa: varias fuentes secundarias reportaron mal la fecha de entrada en vigor.
-Supuestos y limitaciones
-Todo modelo tiene supuestos. Estos son los suyos, declarados:
-Se usan 4.333 semanas por mes. Otra constante produce diferencias de centavos.
-En el escenario de home office se asume que esos días no hay gasto de transporte ni de comida.
-Los días al año en traslado suponen 52 semanas trabajadas, sin vacaciones ni feriados.
-El cálculo no incluye prestaciones, bonos ni otros beneficios, así que dos empleos con el mismo sueldo neto pueden no valer lo mismo.
-Se asume asistencia presencial todos los días trabajados. A quien ya tiene esquema híbrido, el resultado le sale inflado.
-En modo déficit, el escenario de "30 minutos menos de traslado" siempre da cero: el gasto de transporte se captura por día, no por minuto.
-Nada se guarda ni se envía a ningún servidor. Todo ocurre en el navegador.
-Cómo se validó
-Esta es la parte que más trabajo llevó.
-Tres casos de prueba resueltos a mano antes de construir, con su resultado esperado escrito de antemano:
-Caso	Qué prueba	Resultado esperado
-Control · sin traslado ni gastos	Que la estructura no esté rota: las tres horas deben ser idénticas	$86.55
-Típico · $12,000, 48 h, 90 min de traslado	El camino completo, incluidos los escenarios	$34.21
-Extremo · $25,000, 6 días, 10 h extra	Las validaciones legales	$53.08
-Ese método detectó tres errores que de otro modo habrían pasado: datos transpuestos al capturar, una captura tomada con parámetros distintos, y un valor de referencia calculado con una constante que no era la de la especificación.
-Cuatro rondas de control de calidad después de construir, empezando por intentar romper la pieza a propósito. Entre lo que salió:
-Calculaba con datos faltantes y con combinaciones contradictorias (0 días con 48 horas)
-Con gastos mayores al sueldo, la lógica de recomendación se invertía
-Los escenarios prometían más de lo que simulaban
-Un aviso legal mal redactado que decía algo impreciso sobre las horas extra
-Un campo que mostraba un valor negativo pero calculaba con cero, sin avisar
-Una gráfica que en modo déficit se leía al revés que en modo normal
-Se corrigieron de uno en uno, volviendo a correr el caso de prueba después de cada cambio.
-Hecho con
-HTML, CSS y JavaScript en un solo archivo, sin dependencias. Construida con Claude Design.
-El modelo, las fórmulas, las validaciones, los casos de prueba y el control de calidad son míos.
----
-Autora
-Andrea Galicia — Analista de datos con mirada de comercio internacional. Investigo qué hay detrás de los negocios y lo explico con datos.
-LinkedIn: www.linkedin.com/in/andrea-galicia-puga-11346a263
+
+El traslado no se presenta como jornada laboral legal. La página muestra el resultado **con y sin traslado** para que cada persona elija cuál le sirve para su comparación.
+
+## Pruebas de funcionamiento
+
+| Caso | Datos principales | Resultado comprobado |
+| --- | --- | --- |
+| Cálculo habitual | $15,000 mensuales; 5 días; 48 h contratadas; 0 h extra; 90 min de traslado; $60 de transporte y $80 de comida al día | $72.12 por hora contratada; $57.54 sin traslado; $49.76 con traslado |
+| Déficit | $1,000 mensuales; 5 días; 48 h contratadas; 10 min de traslado; $100 de transporte y $100 de comida al día | $4,333.00 de gastos mensuales y $3,333.00 de déficit |
+| Sueldo vacío | Sin sueldo mensual | La página pide completar el sueldo y no muestra un resultado numérico |
+| Gasto negativo | −$5 en transporte diario | La página muestra un error y detiene el cálculo |
+
+Los escenarios se recalculan con los datos de cada persona. **No hay una opción que siempre sea la mejor**: con ciertos gastos y tiempos puede convenir más trabajar desde casa; con otros, un aumento del 10 % produce una mejora mayor.
+
+## Supuestos y límites
+
+- Se supone que todos los días de trabajo indicados son presenciales. Si ya trabajas algunos días desde casa, el resultado puede sobrestimar los gastos y el tiempo de traslado.
+- En el escenario de trabajo desde casa se eliminan, para esos días, el traslado y los gastos diarios de transporte y comida.
+- Los días anuales de traslado se estiman con 52 semanas; no se descuentan vacaciones ni días feriados.
+- No se incluyen prestaciones, bonos ni otros beneficios. Dos empleos con el mismo sueldo neto pueden tener un valor total distinto.
+- Los datos que escribes se procesan en tu navegador; la calculadora no los guarda ni los envía a un servidor.
+
+## Fuentes sobre la jornada laboral en México
+
+- [Reforma constitucional del artículo 123, publicada el 3 de marzo de 2026](https://dof.gob.mx/nota_detalle.php?codigo=5781417&fecha=03/03/2026).
+- [Reforma de la Ley Federal del Trabajo, publicada el 1 de mayo de 2026](https://dof.gob.mx/nota_detalle_popup.php?codigo=5786537). Sus disposiciones transitorias establecen la reducción gradual de 48 horas semanales en 2026 a 40 en 2030.
+
+## Autora
+
+**Andrea Galicia** · Analista de datos con mirada de comercio internacional.
+
+[LinkedIn](https://www.linkedin.com/in/andrea-galicia-puga-11346a263/) · [Calculadora en línea](https://tu-sueldo-real.netlify.app/)
+
+Proyecto desarrollado con apoyo de Claude Design y herramientas de IA para la implementación y las pruebas.
