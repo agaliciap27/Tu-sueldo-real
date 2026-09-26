@@ -44,8 +44,8 @@ El traslado no se presenta como jornada laboral legal. La página muestra el res
 
 | Caso | Datos principales | Resultado comprobado |
 | --- | --- | --- |
-| Cálculo habitual | $15,000 mensuales; 5 días; 48 h contratadas; 0 h extra; 90 min de traslado; $60 de transporte y $80 de comida al día | $72.12 por hora contratada; $57.54 sin traslado; $49.76 con traslado |
-| Déficit | $1,000 mensuales; 5 días; 48 h contratadas; 10 min de traslado; $100 de transporte y $100 de comida al día | $4,333.00 de gastos mensuales y $3,333.00 de déficit |
+| Cálculo habitual | $15,000 mensuales; 5 días; 40 h contratadas; 0 h extra; 90 min de traslado; $60 de transporte y $80 de comida al día | $86.55 por hora contratada; $69.05 sin traslado; $58.14 con traslado |
+| Déficit | $1,000 mensuales; 5 días; 40 h contratadas; 10 min de traslado; $100 de transporte y $100 de comida al día | $4,333.00 de gastos mensuales y $3,333.00 de déficit |
 | Sueldo vacío | Sin sueldo mensual | La página pide completar el sueldo y no muestra un resultado numérico |
 | Gasto negativo | −$5 en transporte diario | La página muestra un error y detiene el cálculo |
 
